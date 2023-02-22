@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  client:
+    build: 
+      context: ./deploy_vite
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/deploy_vite/app_client  
+    depends_on:
+      - server
+  
+  server:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/server/app_server
